@@ -1,0 +1,61 @@
+<div class="box-form">
+    <div class="left">
+        <div class="overlay">
+            <h2>Enjoy Shopping</h2>
+        </div>
+    </div>
+
+    <div class="right">
+        <h4>Sign Up</h4>
+
+        <form [formGroup]="signupForm" (ngSubmit)="submit()">
+            <div class="inputs">
+                <input type="text" name="username" class="login__input" placeholder="Username" formControlName="username">
+                <div class="error-list" *ngIf="fc.username.errors && isSubmitted">
+                    <div *ngIf="fc.username.errors.required" class="alert alert-danger">Username should not be empty</div>
+                </div>
+            </div>
+
+            <div class="inputs">
+                <input type="email" name="email" class="login__input" placeholder="Email" formControlName="email">
+                <div class="error-list" *ngIf="fc.email.errors && isSubmitted">
+                    <!-- <div *ngIf="fc.email.errors.email" class="alert alert-danger">Email is not valid -->
+                     <div *ngIf="fc.email.errors.required" class="alert alert-danger">Should not be empty</div> 
+                    <!-- </div> -->
+                    
+                </div>
+            </div>
+            <div class="inputs">
+                <input
+                  type="text"
+                  name="mobileNumber"
+                  class="login__input"
+                  placeholder="Mobile Number"
+                  formControlName="mobileNumber"
+                  (input)="limitMobileNumberLength($event)"
+  >
+                <div class="error-list" *ngIf="fc.mobileNumber.errors && isSubmitted">
+                    <div *ngIf="fc.mobileNumber.errors.required" class="alert alert-danger">Mobile Number should not be empty</div>
+                    <div *ngIf="fc.mobileNumber.errors.maxlength" class="alert alert-danger">Mobile Number should be atmost 10 characters</div>
+                    <div *ngIf="fc.mobileNumber.errors.minlength" class="alert alert-danger">Mobile Number should be atleast 10 characters</div>
+                    <div *ngIf="fc.mobileNumber.errors.pattern" class="alert alert-danger">Mobile Number should contain only numbers</div>
+                  </div>
+            </div>
+
+            <div class="inputs">
+                <input type="password" name="password" class="login__input" placeholder="Password" formControlName="password">
+                <div class="error-list" *ngIf="fc.password.errors && isSubmitted">
+                  <div *ngIf="fc.password.errors.required" class="alert alert-danger">Password should not be empty</div>
+                  <div *ngIf="fc.password.errors.minlength" class="alert alert-danger">Password should be at least 8 characters long</div>
+                  <div *ngIf="fc.password.errors.pattern" class="alert alert-danger">
+                    Password should include at least 1 uppercase letter, 1 digit, and 1 special character
+                  </div>
+                </div>
+              </div>
+
+            <br>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</div>
+

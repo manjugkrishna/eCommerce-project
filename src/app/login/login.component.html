@@ -1,0 +1,52 @@
+
+<div class="box-form">
+    <div class="left">
+        <div class="overlay">
+            <h2>Enjoy Shopping </h2>
+
+
+        </div>
+    </div>
+
+    <div class="right">
+        <h4>Login</h4>
+
+
+        <p class="mb-3">Don't have an account? <a routerLink="/signUp">Creat Your Account</a> it takes less than a
+            minute</p>
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+            <div class="inputs">
+                <input type="text" name="email" class="login__input" placeholder="Email" formControlName="email">
+
+                <div class="error-list" *ngIf="fc.email.errors && isSubmitted">
+                   
+                    <div *ngIf="fc.email.errors.required" class="alert alert-danger">Should not be empty</div> 
+                    <div *ngIf="fc.email.errors.email" class="alert alert-danger">Email is not valid</div>
+                </div>
+            </div>
+            <div class="inputs">
+                <input type="password" name="Password" class="login__input" placeholder="Password"
+                    formControlName="password">
+                <div class="error-list" *ngIf="fc.password.errors && isSubmitted">
+                    
+                    <div *ngIf="fc.password.errors.required" class="alert alert-danger"> Password should not be empty</div> 
+
+                </div>
+            </div>
+
+            <div class="remember-me--forget-password">
+                
+                <br>
+                
+
+            </div>
+
+            <br>
+            <button type="submit">Login</button>
+        </form>
+        <br><br>
+
+
+    </div>
+
+</div>
