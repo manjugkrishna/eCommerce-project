@@ -1,36 +1,38 @@
-
 <section id="product">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="productHeading text-center">
-                    <h2 class="mb-3">Exclusive Products</h2> 
+                    <h2 class="m-3">Exclusive Products</h2>
                 </div>
             </div>
             <div class="col-12">
-                <div class="row mt-3">
-                    <div class="col-lg-3 pt-1" *ngFor="let product of productList">
+                <div class="row m-3">
+                    <div class="col-lg-3 pt-4" *ngFor="let product of productList">
                         <div class="box-shadow">
-                            <div class="card">
-                                <img class="img-fluid" style="height:200px;" [src]="product.productImageUrl" class="card-img-top"
-                                    alt="...">
+                            <div class="card card-box">
+                                <div class="item-img">
+                                    <img class="img-fluid" style="height:200px;" [src]="product.productImageUrl"
+                                    class="card-img-top" alt="...">
+                                </div>
                                 <div class="card-body">
                                     <h5 class="card-title">{{product.productName}}</h5>
-                                    <p class="card-text"><span
-                                            class="text-danger fw-semibold me-2">${{product.productPrice}}</span><del> ${{product.productPrice+50}}</del>
-                                        <span class="text-success ms-2">35% Off</span></p>
-                                     
+                                    <p class="card-text">
+                                        <del> {{product.productPrice+50 | currency}}</del><span
+                                            class="text-danger fw-semibold me-2">{{product.productPrice |
+                                            currency}}</span>
+                                        <span class="text-success">35% Off</span>
+                                    </p>
                                     <div class="row">
-                                        
-                                        <div class="col-15 text-end" >
-                                            <button class="btn btn-sm btn-success" (click)="addItemToCart(product)"> Add To Cart</button> 
+                                        <div class="col-15 text-end">
+                                            <button class="btn btn-sm btn-success" (click)="addItemToCart(product)"> Add
+                                                To Cart</button>
                                         </div>
                                     </div>
-                                   
                                 </div>
                             </div>
                         </div>
-                    </div> 
+                    </div>
                 </div>
             </div>
         </div>
