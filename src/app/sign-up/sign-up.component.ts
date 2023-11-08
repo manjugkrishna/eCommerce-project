@@ -44,7 +44,6 @@ limitMobileNumberLength(event: Event): void {
   const input = event.target as HTMLInputElement;
   const inputValue = input.value;
   if (inputValue.length > 10) {
-    // If more than 10 digits, truncate the input value
     input.value = inputValue.slice(0, 10);
   }
 }

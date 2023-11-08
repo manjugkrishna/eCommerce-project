@@ -27,10 +27,9 @@
               Category
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item">Mobile</a></li>
-              <li><a class="dropdown-item">Camera</a></li>
-
-              <li><a class="dropdown-item">Earphones</a></li>
+              <li *ngFor="let category of categories">
+                <a class="dropdown-item" (click)="navigate(category)">{{ category }}</a>
+              </li>
             </ul>
           </li>
 

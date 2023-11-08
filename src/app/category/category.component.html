@@ -1,1 +1,10 @@
-<p>category works!</p>
+<div class="category-container">
+    <div class="product" *ngFor="let product of filteredItems">
+      <img [src]="product.productImageUrl" alt="{{ product.name }}" class="product-image">
+      <div class="product-details">
+        <h2>{{ product.productName }}</h2>
+        <p>Price: ${{ product.productPrice }}</p>
+        <button (click)="addToCart(product)">Add to Cart</button>
+      </div>
+    </div>
+  </div>

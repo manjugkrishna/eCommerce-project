@@ -6,6 +6,7 @@ import { SaleComponent } from './sale/sale.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+// import { NavbarComponent } from './navbar/navbar.component';
 import { CategoryComponent } from './category/category.component';
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
     path:'category/:categoryname',
     component:CategoryComponent
   },
+  // {
+  //   path:'category/:categoryname',
+  //   component:NavbarComponent
+  // },
   {
     path:'sale',
     component:SaleComponent
