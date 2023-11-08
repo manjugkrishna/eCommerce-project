@@ -89,6 +89,7 @@ img {
 .cart-button {
     display: flex;
     width: 5rem;
+    position: relative;
 }
 
 .cart-button *{
@@ -101,6 +102,5 @@ img {
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 0;
-    right: 10%;
+    right: 5%;
 }

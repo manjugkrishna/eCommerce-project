@@ -10,31 +10,25 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
- cartProducts:any[]=[];
- isCartOpen: boolean = false;
- categories = ['Mobile', 'Camera', 'Earphones'];
- selectedCategory: string;
-  
+  cartProducts: any[] = [];
+  isCartOpen: boolean = false;
+  categories = ['Mobile', 'Camera', 'Earphones'];
+  selectedCategory: string;
 
- constructor(private productService: ProductService,private router:Router) {
-  this.cartProducts = this.productService.cart;
-  this.selectedCategory = this.categories[0];
-  console.log(this.cartProducts)
-}
- 
+
+  constructor(private productService: ProductService, private router: Router) {
+    this.cartProducts = this.productService.cart;
+    this.selectedCategory = this.categories[0];
+    console.log(this.cartProducts)
+  }
 
   toggleCartDropdown() {
     this.isCartOpen = !this.isCartOpen;
   }
-  
-    
-  navigate(item: string) {
-      this.selectedCategory = item;
-      this.router.navigate(['/category', item]);
-    }
 
-    
- 
-  
+  navigate(item: string) {
+    this.selectedCategory = item;
+    this.router.navigate(['/category', item]);
+  }
 
 }

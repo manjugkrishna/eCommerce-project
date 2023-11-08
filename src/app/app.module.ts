@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { CategoryComponent } from './category/category.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -28,7 +29,8 @@ import { CategoryComponent } from './category/category.component';
     ContactUsComponent,
     LoginComponent,
     SignUpComponent,
-    CategoryComponent
+    CategoryComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

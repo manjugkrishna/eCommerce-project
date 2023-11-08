@@ -6,8 +6,9 @@ import { SaleComponent } from './sale/sale.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
-// import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from './navbar/navbar.component';
 import { CategoryComponent } from './category/category.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
@@ -18,10 +19,11 @@ const routes: Routes = [
     path:'category/:categoryname',
     component:CategoryComponent
   },
-  // {
-  //   path:'category/:categoryname',
-  //   component:NavbarComponent
-  // },
+  {
+    path:'cart',
+    component:CartComponent
+  },
+  
   {
     path:'sale',
     component:SaleComponent
@@ -31,13 +33,14 @@ const routes: Routes = [
     component:ContactUsComponent
   },
   {
-    path:'login',
-    component:LoginComponent
-  },
-  {
     path:'signUp',
     component:SignUpComponent
   },
+  {
+    path:'login',
+    component:LoginComponent
+  },
+  
   {
     path:"**",
     component:HomeComponent

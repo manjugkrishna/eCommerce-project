@@ -1,5 +1,6 @@
 import { Component ,OnInit} from '@angular/core';
 import { FormGroup,FormBuilder,Validators} from '@angular/forms'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -10,7 +11,7 @@ export class SignUpComponent {
 
 signupForm!:FormGroup;
 isSubmitted=false;
-constructor(private formBuilder:FormBuilder){
+constructor(private formBuilder:FormBuilder,private router:Router){
 
 }
 ngOnInit(): void {
@@ -37,9 +38,10 @@ ngOnInit(): void {
 submit(){
   this.isSubmitted=true;
   if(this.signupForm.invalid) return;
-  console.log("hi")
+  this.router.navigate(['/login']);
   
 }
+
 limitMobileNumberLength(event: Event): void {
   const input = event.target as HTMLInputElement;
   const inputValue = input.value;

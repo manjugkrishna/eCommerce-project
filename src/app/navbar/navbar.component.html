@@ -12,15 +12,12 @@
       <!-- Nav Items -->
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0  text-center ">
-
           <li class="nav-item dropdown">
             <a class="nav-link  fw-semibold text-uppercase  me-1 text-danger fw-bold" routerLink="/home"
               id="navbarDropdown" role="button" aria-expanded="false">
               home
             </a>
-
           </li>
-
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle fw-semibold text-uppercase text-black  me-1 fw-bold" id="navbarDropdown"
               role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -32,23 +29,18 @@
               </li>
             </ul>
           </li>
-
           <li class="nav-item dropdown">
             <a class="nav-link toggle fw-semibold text-uppercase text-black  me-1 fw-bold" routerLink="/contact-us"
               role="button" data-bs-toggle="dropdown" aria-expanded="false">
               CONTACT US
             </a>
-
           </li>
-
-
           <li class="nav-item">
             <a class="nav-link">
               <i class="fa-solid fs-magnifying-glass fs-5" style="color: #202122;"></i>
             </a>
           </li>
-
-          <li class="nav-item dropdown">
+          <!-- <li class="nav-item dropdown">
             <div class="cart-button">
               <a class="nav-link" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <p class="fw-bold">CART</p>
@@ -73,9 +65,7 @@
                     </div>
                     <button type="button" class="btn fs-5 closeBtn"><i class="fa-solid fa-xmark"></i></button>
                   </div>
-
                 </li>
-
                 <li class="p-2">
                   <div class=" w-100 ">
                     <div class="d-flex justify-content-between">
@@ -86,7 +76,6 @@
                       <button class="btn btn-dark rounded-0 px-3"> View Cart</button>
                       <a routerLink="/checkout"> <button class="btn btn-danger rounded-0 px-3">Checkout</button></a>
                     </div>
-
                   </div>
                 </li>
               </ng-container>
@@ -94,16 +83,24 @@
                 <li class="p-2">
                   <div class=" w-100 text-center">
                     <h6>Cart Is Empty</h6>
-
                   </div>
                 </li>
               </ng-container>
             </ul>
+          </li> -->
+          <li class="nav-item">
+            <div class="cart-button">
+              <a class="nav-link" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <p class="fw-bold" routerLink="/cart">CART</p>
+              </a>
+              <span class="badge rounded-pill bg-danger" *ngIf="cartProducts.length > 0">
+                {{cartProducts.length}}
+              </span>
+            </div>
           </li>
           <li class="nav-item dropdown">
             <button type="button" class="btn btn-primary" [routerLink]="['/login']">Login</button>
           </li>
-
         </ul>
       </div>
     </div>

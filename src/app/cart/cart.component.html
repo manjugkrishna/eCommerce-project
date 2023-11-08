@@ -1,0 +1,36 @@
+<ng-container *ngIf="cartProducts.length != 0">
+    <li class="p-2" *ngFor="let item of cartProducts">
+        <div class="d-flex w-100 border-bottom justify-content-evenly">
+            <div>
+                <img style="height: 80px !important;" class="img-fluid     p-2" [src]="item.productImageUrl" alt="">
+            </div>
+            <div>
+                <a class="text-decoration-none text-black fw-semibold">
+                    <p class="m-0 p-0">{{item.productName}}</p>
+                </a>
+                <p>1<i class="fa-solid fa-xmark" style="color: #0d0d0d;"></i> $ {{item.productPrice}}</p>
+            </div>
+            <button type="button" class="btn fs-5 closeBtn"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+    </li>
+    <li class="p-2">
+        <div class=" w-100 ">
+            <div class="d-flex justify-content-between">
+                <h6>SubTotal :</h6>
+                <h6>$159.00</h6>
+            </div>
+            <div class="d-flex justify-content-evenly mt-2">
+                <button class="btn btn-dark rounded-0 px-3"> View Cart</button>
+                <a routerLink="/checkout"> <button class="btn btn-danger rounded-0 px-3">Checkout</button></a>
+            </div>
+        </div>
+    </li>
+</ng-container>
+<ng-container *ngIf="cartProducts.length == 0">
+    <li class="p-2">
+        <div class=" w-100 text-center">
+            <h6>Cart Is Empty</h6>
+        </div>
+    </li>
+</ng-container>
+
