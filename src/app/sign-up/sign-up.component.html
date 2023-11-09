@@ -4,10 +4,8 @@
             <h2>Enjoy Shopping</h2>
         </div>
     </div>
-
     <div class="right">
         <h4>Sign Up</h4>
-
         <form [formGroup]="signupForm" (ngSubmit)="submit()">
             <div class="inputs">
                 <input type="text" name="username" class="login__input" placeholder="Username"
@@ -17,14 +15,11 @@
                     </div>
                 </div>
             </div>
-
             <div class="inputs">
                 <input type="email" name="email" class="login__input" placeholder="Email" formControlName="email">
                 <div class="error-list" *ngIf="fc.email.errors && isSubmitted">
                     <div *ngIf="fc.email.errors.email" class="alert alert-danger">Email is not valid </div>
                     <div *ngIf="fc.email.errors.required" class="alert alert-danger">Should not be empty</div>
-                    <!-- </div> -->
-
                 </div>
             </div>
             <div class="inputs">
@@ -41,7 +36,6 @@
                         only numbers</div>
                 </div>
             </div>
-
             <div class="inputs">
                 <input type="password" name="password" class="login__input" placeholder="Password"
                     formControlName="password">
@@ -55,7 +49,18 @@
                     </div>
                 </div>
             </div>
-
+            <div class="inputs">
+                <input type="password" name="confirmPassword" class="login__input" placeholder="ConfirmPassword"
+                    formControlName="confirmPassword">
+                <div class="error-list" *ngIf="fc.confirmPassword.errors && isSubmitted">
+                    <div *ngIf="fc.confirmPassword.errors.required" class="alert alert-danger">
+                        Confirm Password is required.
+                    </div>
+                    <div *ngIf="fc.confirmPassword.errors.passwordShouldMatch " class="alert alert-danger">
+                        Password and Confirm Password do not match.
+                    </div>
+                </div>
+            </div>
             <br>
             <button type="submit">Sign Up</button>
         </form>

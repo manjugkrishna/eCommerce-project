@@ -21,14 +21,11 @@ export class NavbarComponent {
     this.selectedCategory = this.categories[0];
     console.log(this.cartProducts)
   }
-
   toggleCartDropdown() {
     this.isCartOpen = !this.isCartOpen;
   }
-
   navigate(item: string) {
     this.selectedCategory = item;
     this.router.navigate(['/category', item]);
   }
-
 }

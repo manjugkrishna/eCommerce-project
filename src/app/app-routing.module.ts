@@ -12,40 +12,37 @@ import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   {
-    path:'products',
-    component:HomeComponent
+    path: 'products',
+    component: HomeComponent
   },
   {
-    path:'category/:categoryname',
-    component:CategoryComponent
+    path: 'category/:categoryname',
+    component: CategoryComponent
   },
   {
-    path:'cart',
-    component:CartComponent
-  },
-  
-  {
-    path:'sale',
-    component:SaleComponent
+    path: 'cart',
+    component: CartComponent
   },
   {
-    path:'contact-us',
-    component:ContactUsComponent
+    path: 'sale',
+    component: SaleComponent
   },
   {
-    path:'signUp',
-    component:SignUpComponent
+    path: 'contact-us',
+    component: ContactUsComponent
   },
   {
-    path:'login',
-    component:LoginComponent
+    path: 'signUp',
+    component: SignUpComponent
   },
-  
   {
-    path:"**",
-    component:HomeComponent
+    path: 'login',
+    component: LoginComponent
   },
-  
+  {
+    path: "**",
+    component: HomeComponent
+  },
 ];
 
 @NgModule({

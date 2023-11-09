@@ -18,6 +18,4 @@ export class ProductService {
       this.cart.push(product)
       console.log("hi",this.cart)
   }
-  // getItemsByCategory(id:number){
-  // }
 }

@@ -8,15 +8,11 @@ import { ProductService } from '../services/product.service';
 })
 export class CartComponent {
   cartProducts: any[] = [];
-  subtotal: number = 0;
 
-  isCartOpen: boolean = false;
   constructor(private productService: ProductService) {
     this.cartProducts = this.productService.cart;
 
   }
-  toggleCartDropdown() {
-    this.isCartOpen = !this.isCartOpen;
-  }
+
 
 }

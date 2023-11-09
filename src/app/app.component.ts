@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductService } from './services/product.service';
 
 @Component({
@@ -7,18 +7,6 @@ import { ProductService } from './services/product.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'eCommerce';
-  cartProducts :any[]=[]
 
-  // constructor(private productService:ProductService){
-  //   this.loadCart();
-  // }
 
-  // ngOnInit():void{
-  //    this.loadCart();
-  // }
-  // loadCart(){
-  //    this.cartProducts= this.productService.cart
-     
-  //  }
 }

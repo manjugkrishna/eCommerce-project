@@ -8,7 +8,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-// import { CartComponent } from './cart/cart.component';
 import { SaleComponent } from './sale/sale.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginComponent } from './login/login.component';
@@ -24,7 +23,6 @@ import { CartComponent } from './cart/cart.component';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    // CartComponent,
     SaleComponent,
     ContactUsComponent,
     LoginComponent,
