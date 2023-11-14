@@ -24,21 +24,26 @@
                     <div *ngIf="fc.email.errors.email" class="alert alert-danger">Email is not valid</div>
                 </div>
             </div>
-            <div class="inputs">
-                <input type="password" name="Password" class="login__input" placeholder="Password"
-                    formControlName="password">
-                <div class="error-list" *ngIf="fc.password.errors && isSubmitted">
-                    
-                    <div *ngIf="fc.password.errors.required" class="alert alert-danger"> Password should not be empty</div> 
-
-                </div>
-            </div>
+            
+                    <div class="inputs">
+                        <input type="password" name="password" class="login__input" placeholder="Password"
+                            formControlName="password">
+                        <div class="error-list" *ngIf="fc.password.errors && isSubmitted">
+                            <div *ngIf="fc.password.errors.required" class="alert alert-danger">Password should not be empty
+                            </div>
+                            <div *ngIf="fc.password.errors.minlength" class="alert alert-danger">Password should be at least 8
+                                characters long</div>
+                            <div *ngIf="fc.password.errors.pattern" class="alert alert-danger">
+                                Password should include at least 1 uppercase letter,1 digit and 1 special character
+                            </div>
+                        </div>
+                    </div>
+            
 
             <div class="remember-me--forget-password">
                 
                 <br>
-                
-
+            
             </div>
 
             <br>

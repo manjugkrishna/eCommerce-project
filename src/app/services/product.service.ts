@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Observable,Subject} from 'rxjs';
+// import {Observable} from 'rxjs';
 import { HttpClient} from '@angular/common/http';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,5 @@ export class ProductService {
   }
   addToCart(product:any){
       this.cart.push(product)
-      console.log("hi",this.cart)
   }
 }

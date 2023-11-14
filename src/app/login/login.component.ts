@@ -9,8 +9,6 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-
-
 loginForm!:FormGroup;
 isSubmitted=false;
 constructor(private formBuilder:FormBuilder,private router:Router){
@@ -19,7 +17,14 @@ constructor(private formBuilder:FormBuilder,private router:Router){
 ngOnInit(): void {
   this.loginForm=this.formBuilder.group({
     email:['', [Validators.required,Validators.email]],
-    password:['',Validators.required]
+    password: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(8),
+        Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/)
+      ],
+    ],
   })
 }
  get fc(){

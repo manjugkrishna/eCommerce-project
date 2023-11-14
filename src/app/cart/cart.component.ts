@@ -11,8 +11,5 @@ export class CartComponent {
 
   constructor(private productService: ProductService) {
     this.cartProducts = this.productService.cart;
-
   }
-
-
 }

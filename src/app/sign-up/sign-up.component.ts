@@ -51,7 +51,7 @@ export class SignUpComponent {
 
   }
 
-  limitMobileNumberLength(event: Event): void {
+  limitMNumberLength(event: Event): void {
     const input = event.target as HTMLInputElement;
     const inputValue = input.value;
     if (inputValue.length > 10) {

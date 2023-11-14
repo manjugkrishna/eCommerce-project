@@ -24,7 +24,7 @@
             </div>
             <div class="inputs">
                 <input type="text" name="mobileNumber" class="login__input" placeholder="Mobile Number"
-                    formControlName="mobileNumber" (input)="limitMobileNumberLength($event)">
+                    formControlName="mobileNumber" (input)="limitMNumberLength($event)">
                 <div class="error-list" *ngIf="fc.mobileNumber.errors && isSubmitted">
                     <div *ngIf="fc.mobileNumber.errors.required" class="alert alert-danger">Mobile Number should not be
                         empty</div>
@@ -40,10 +40,12 @@
                 <input type="password" name="password" class="login__input" placeholder="Password"
                     formControlName="password">
                 <div class="error-list" *ngIf="fc.password.errors && isSubmitted">
-                    <div *ngIf="fc.password.errors.required" class="alert alert-danger">Password should not be empty
+                    <div *ngIf="fc.password.errors.required" class="alert alert-danger">
+                        Password should not be empty
                     </div>
-                    <div *ngIf="fc.password.errors.minlength" class="alert alert-danger">Password should be at least 8
-                        characters long</div>
+                    <div *ngIf="fc.password.errors.minlength" class="alert alert-danger">
+                        Password should be at least 8 characters long
+                    </div>
                     <div *ngIf="fc.password.errors.pattern" class="alert alert-danger">
                         Password should include at least 1 uppercase letter,1 digit and 1 special character
                     </div>
