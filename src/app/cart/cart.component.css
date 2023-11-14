@@ -1,3 +1,32 @@
 li {
     list-style-type: none;
 }
+.cart-items-container {
+    border: 2px solid;
+    padding: 20px;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    margin-top: 20px;
+    width: 600px;
+  }
+  
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+  }
+  
+  .cart-item-image {
+    max-width: 100px; 
+  }
+  
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+  }
+
+  .remove-button {
+    margin-left: auto; 
+  }

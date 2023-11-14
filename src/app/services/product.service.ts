@@ -14,7 +14,15 @@ export class ProductService {
   getAllProducts(){
         return this.http.get("assets/data.json");
   }
-  addToCart(product:any){
-      this.cart.push(product)
+  addToCart(product: any) {
+    const existingItem = this.cart.find(item => item.productId === product.productId);
+
+    if (existingItem) {
+      // If the product is already in the cart, increment the quantity
+      existingItem.quantity = (existingItem.quantity || 1) + 1;
+    } else {
+      // If the product is not in the cart, add it as a new item
+      this.cart.push({ ...product, quantity: 1 });
+    }
   }
 }

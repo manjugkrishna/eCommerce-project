@@ -18,17 +18,21 @@
             <div class="inputs">
                 <input type="text" name="email" class="login__input" placeholder="Email" formControlName="email">
 
-                <div class="error-list" *ngIf="fc.email.errors && isSubmitted">
+                <div class="error-list" *ngIf="fc.email.errors && (fc.email.touched || isSubmitted)">
                    
                     <div *ngIf="fc.email.errors.required" class="alert alert-danger">Should not be empty</div> 
                     <div *ngIf="fc.email.errors.email" class="alert alert-danger">Email is not valid</div>
+                    <div *ngIf="fc.email.errors.minlength" class="alert alert-danger">Email should be at least 10
+                        characters long</div>
+                    <div *ngIf="fc.email.errors.maxlength" class="alert alert-danger">Email should be atmost 20
+                            characters long</div>
                 </div>
             </div>
             
                     <div class="inputs">
                         <input type="password" name="password" class="login__input" placeholder="Password"
                             formControlName="password">
-                        <div class="error-list" *ngIf="fc.password.errors && isSubmitted">
+                        <div class="error-list" *ngIf="fc.password.errors && (fc.email.touched || isSubmitted)">
                             <div *ngIf="fc.password.errors.required" class="alert alert-danger">Password should not be empty
                             </div>
                             <div *ngIf="fc.password.errors.minlength" class="alert alert-danger">Password should be at least 8
@@ -42,8 +46,7 @@
 
             <div class="remember-me--forget-password">
                 
-                <br>
-            
+                <br>           
             </div>
 
             <br>
