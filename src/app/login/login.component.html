@@ -32,7 +32,7 @@
                     <div class="inputs">
                         <input type="password" name="password" class="login__input" placeholder="Password"
                             formControlName="password">
-                        <div class="error-list" *ngIf="fc.password.errors && (fc.email.touched || isSubmitted)">
+                        <div class="error-list" *ngIf="fc.password.errors && (fc.password.touched || isSubmitted)">
                             <div *ngIf="fc.password.errors.required" class="alert alert-danger">Password should not be empty
                             </div>
                             <div *ngIf="fc.password.errors.minlength" class="alert alert-danger">Password should be at least 8

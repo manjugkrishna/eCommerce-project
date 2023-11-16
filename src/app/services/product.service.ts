@@ -12,7 +12,7 @@ export class ProductService {
   constructor(private http:HttpClient) { }
 
   getAllProducts(){
-        return this.http.get("assets/data.json");
+        return this.http.get("http://localhost:3000/api/v1/products");
   }
   addToCart(product: any) {
     const existingItem = this.cart.find(item => item.productId === product.productId);

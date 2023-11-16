@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,19 +8,27 @@ export class UserService {
 
   private users: any[] = [];
 
-  registerUser(user: any): void {
+  constructor(private http: HttpClient) {}
+
+  registerUser(user: any): any {
     this.users.push(user);
-    localStorage.setItem('users', JSON.stringify(this.users));
+    return this.http.post('http://localhost:3000/api/v1/signup', user)
   }
 
-  loginUser(email: string, password: string): boolean {
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const user = users.find((u: any) => u.email === email && u.password === password);
-    if (user) {
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      return true;
+  async loginUser(email: string, password: string): Promise<any> {
+    const dataToPass = {
+      email,
+      password
+    };
+  
+    try {
+      const res = await this.http.post('http://localhost:3000/api/v1/login', dataToPass).toPromise();
+      const userData: any = res;
+        return userData;
+    } catch (error) {
+      console.log('error', error);
+      throw error; // You can handle errors as needed
     }
-    return false;
   }
 
   getCurrentUser(): any {

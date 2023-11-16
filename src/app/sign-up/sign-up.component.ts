@@ -18,7 +18,7 @@ export class SignUpComponent {
   }
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      username: ['', Validators.required,Validators.maxLength(20),Validators.minLength(5)],
+      username: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.email,Validators.minLength(10),Validators.maxLength(30)]],
       mobileNumber: ['',
         [
@@ -50,8 +50,20 @@ export class SignUpComponent {
     if (this.signupForm.invalid) return;
 
     const user = this.signupForm.value;
-    this.userService.registerUser(user);
-    this.router.navigate(['/login']);
+    const dataToPass = {
+      username: user.username,
+      email: user.email,
+      phoneNumber: user.mobileNumber,
+      password: user.password
+    }
+    this.userService.registerUser(dataToPass).subscribe({
+      next: () => {
+        this.router.navigate(['/login']);
+      },
+      error: () => {
+        alert('User already exists')
+      }
+    });
 
   }
 
