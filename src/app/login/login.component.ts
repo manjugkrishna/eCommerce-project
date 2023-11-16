@@ -37,13 +37,14 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) return;
   
     const { email, password } = this.loginForm.value;
+    console.log('user details', email, password)
   
     this.userService.loginUser(email, password)
       .then((data) => {
         if (data.msg === 'login successful') {
-          console.log('User is logged in successfully');
           // Navigate to home or perform other actions
           this.authService.login()
+          this.userService.setCurrentUser(data)
           this.router.navigate(['/home']);
         } 
       })

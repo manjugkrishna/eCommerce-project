@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { CartServiceService } from '../services/cart-service.service';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class CategoryComponent {
   filteredItems: any[] = [];
 
   constructor(private productService: ProductService, private activate: ActivatedRoute,private router: Router,
-    private authService: AuthService) {
+    private authService: AuthService,private cartService:CartServiceService) {
     this.activate.params.subscribe((res: any) => {
       this.getFilteredItems()
     })
@@ -27,16 +28,15 @@ export class CategoryComponent {
       console.log((this.filteredItems).length);
     })
   }
-  addToCart(product: any) {
-    this.authService.isLoggedIn.subscribe((isLoggedIn: boolean) => {
-      if (isLoggedIn) {
-        this.productService.addToCart(product);
-        alert('Product added to cart');
-      } else {
-        // alert('User is not logged in. Please log in to add items to the cart.');
-        // Redirect to the login page
-        this.router.navigate(['/login']);
+  addItemToCart(product: any) {
+    this.cartService.addToCart(product._id, 1).subscribe({
+      next: (res) => {
+        console.log(res)
+      alert("Item added to cart")
+      },
+      error: (err) => {
+        alert('Unable to add. Please login')
       }
-    });
+    })
   }
 }

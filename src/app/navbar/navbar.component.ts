@@ -18,7 +18,9 @@ export class NavbarComponent {
   selectedCategory: string;
 
 
-  constructor(private productService: ProductService,private authService: AuthService, private router: Router) {
+  constructor(private productService: ProductService,
+    private authService: AuthService, 
+    private router: Router) {
     this.cartProducts = this.productService.cart;
     this.selectedCategory = this.categories[0];
     this.authService.isLoggedIn.subscribe((isLoggedIn) => {

@@ -18,7 +18,7 @@ export class SignUpComponent {
   }
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      username: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(20)]],
+      username: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(15)]],
       email: ['', [Validators.required, Validators.email,Validators.minLength(10),Validators.maxLength(30)]],
       mobileNumber: ['',
         [
@@ -66,6 +66,13 @@ export class SignUpComponent {
     });
 
   }
+  limitUserNameLength(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const inputValue = input.value;
+    if (inputValue.length > 10) {
+      input.value = inputValue.slice(0, 15);
+    }
+  }
 
   limitMNumberLength(event: Event): void {
     const input = event.target as HTMLInputElement;
@@ -73,5 +80,14 @@ export class SignUpComponent {
     if (inputValue.length > 10) {
       input.value = inputValue.slice(0, 10);
     }
+  }
+
+  checkInput(event: KeyboardEvent) {
+    const key = event.keyCode
+    return (
+      (key >= 65 && key <=90) ||
+      (key >= 97 && key <= 122) ||
+      key === 8 
+    )
   }
 }

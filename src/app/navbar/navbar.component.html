@@ -88,7 +88,7 @@
               </ng-container>
             </ul>
           </li> -->
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="isLoggedIn">
             <div class="cart-button">
               <a class="nav-link" id="navbarDropdown3" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                 <p class="fw-bold" routerLink="/cart">CART</p>

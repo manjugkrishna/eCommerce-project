@@ -6,12 +6,9 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
 
-  private users: any[] = [];
-
   constructor(private http: HttpClient) {}
 
   registerUser(user: any): any {
-    this.users.push(user);
     return this.http.post('http://localhost:3000/api/v1/signup', user)
   }
 
@@ -33,6 +30,10 @@ export class UserService {
 
   getCurrentUser(): any {
     return JSON.parse(localStorage.getItem('currentUser') || '{}');
+  }
+
+  setCurrentUser(user: any): void {
+    localStorage.setItem('currentUser', JSON.stringify(user))
   }
 
   logoutUser(): void {
