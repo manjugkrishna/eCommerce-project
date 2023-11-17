@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
       },
       error: (err) => {
         alert('Unable to add. Please login')
+        this.router.navigate(['/login']);
       }
     })
   }

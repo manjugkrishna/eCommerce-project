@@ -169,3 +169,30 @@ body {
   .lsm{
     padding-top: 60%;
   }
+
+  .password-field {
+    display: flex;
+    align-items: center;
+  }
+
+  .box-form .right .password-field> button {
+    height: 1.9rem;
+    font-size: 8px;
+    padding: 6px 10px;
+    background-color: #1904E5;
+    box-shadow: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .box-form .right .password-field> button p{
+    color: white;
+    margin: 0;
+  }
+
+  input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

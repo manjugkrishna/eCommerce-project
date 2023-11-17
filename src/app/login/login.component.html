@@ -16,7 +16,7 @@
             minute</p>
         <form [formGroup]="loginForm" (ngSubmit)="submit()">
             <div class="inputs">
-                <input type="text" name="email" class="login__input" placeholder="Email" formControlName="email">
+                <input type="text" name="email" class="login__input" placeholder="Email *" formControlName="email" (input)="limitEmailLength($event)">
 
                 <div class="error-list" *ngIf="fc.email.errors && (fc.email.touched || isSubmitted)">
                    
@@ -30,8 +30,11 @@
             </div>
             
                     <div class="inputs">
-                        <input type="password" name="password" class="login__input" placeholder="Password"
-                            formControlName="password">
+                        <div class="password-field">
+                            <input [type]="passwordToggler ? 'password' : 'text'" name="password" class="login__input" placeholder="Password *"
+                            formControlName="password" >
+                            <button type="button" (click)="togglePassword()"><p>Show</p></button>
+                        </div>
                         <div class="error-list" *ngIf="fc.password.errors && (fc.password.touched || isSubmitted)">
                             <div *ngIf="fc.password.errors.required" class="alert alert-danger">Password should not be empty
                             </div>

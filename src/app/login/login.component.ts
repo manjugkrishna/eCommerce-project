@@ -13,6 +13,8 @@ export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
   isSubmitted = false;
+  passwordToggler: boolean = true;
+  
   constructor(private formBuilder: FormBuilder, private router: Router, private authService: AuthService, private userService: UserService) {
 
   }
@@ -24,7 +26,7 @@ export class LoginComponent implements OnInit {
         [
           Validators.required,
           Validators.minLength(8),
-          Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/)
+          Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?#&])[A-Za-z\d$@#$!%*?&]{8,}$/)
         ],
       ],
     })
@@ -32,12 +34,13 @@ export class LoginComponent implements OnInit {
   get fc() {
     return this.loginForm.controls;
   }
+  
   submit() {
     this.isSubmitted = true;
     if (this.loginForm.invalid) return;
   
     const { email, password } = this.loginForm.value;
-    console.log('user details', email, password)
+    // console.log('user details', email, password)
   
     this.userService.loginUser(email, password)
       .then((data) => {
@@ -53,6 +56,17 @@ export class LoginComponent implements OnInit {
         alert('Invalid Credentials')
         // Handle errors as needed
       });
+  }
+  togglePassword() {
+    this.passwordToggler = !this.passwordToggler
+  }
+
+  limitEmailLength(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const inputValue = input.value;
+    if (inputValue.length > 10) {
+      input.value = inputValue.slice(0, 30);
+    }
   }
   
 }

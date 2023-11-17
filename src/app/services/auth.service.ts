@@ -7,11 +7,12 @@ import { UserService } from './user.service';
 })
 export class AuthService {
   constructor(private userService: UserService) { }
-  check = this.userService.getCurrentUser().token ? true : false
+  check = this.userService.getCurrentUser().token ? true : false;
+  // return the recent value
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.check);
   isLoggedIn= this.isLoggedInSubject.asObservable();
   login() {
-    this.isLoggedInSubject.next(true);
+    this.isLoggedInSubject.next(true); //next-(emit the most recent value)
   }
 
   logout() {

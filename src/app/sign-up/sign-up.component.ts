@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms'
+import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl, ValidationErrors } from '@angular/forms'
 import { Router } from '@angular/router';
 import { PasswordValidators } from './password.validators';
 import { UserService } from '../services/user.service';
+
 
 @Component({
   selector: 'app-sign-up',
@@ -11,15 +12,20 @@ import { UserService } from '../services/user.service';
 })
 export class SignUpComponent {
 
+  passwordToggler: boolean = true;
   signupForm!: FormGroup;
   isSubmitted = false;
-  constructor(private formBuilder: FormBuilder, private router: Router,private userService: UserService ) {
+
+
+  constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService) {
 
   }
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      username: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(15)]],
-      email: ['', [Validators.required, Validators.email,Validators.minLength(10),Validators.maxLength(30)]],
+      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(16)]],
+      email: ['', [Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(30),Validators.email]],
       mobileNumber: ['',
         [
           Validators.required,
@@ -33,7 +39,7 @@ export class SignUpComponent {
         [
           Validators.required,
           Validators.minLength(8),
-          Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,}$/)
+          Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&#])[A-Za-z\d$@#$!%*?&]{8,}$/)
         ],
       ],
       confirmPassword: ['', Validators.required]
@@ -51,7 +57,7 @@ export class SignUpComponent {
 
     const user = this.signupForm.value;
     const dataToPass = {
-      username: user.username,
+      username: user.name,
       email: user.email,
       phoneNumber: user.mobileNumber,
       password: user.password
@@ -59,9 +65,11 @@ export class SignUpComponent {
     this.userService.registerUser(dataToPass).subscribe({
       next: () => {
         this.router.navigate(['/login']);
+        alert("SignUp Successfull !!!");
       },
-      error: () => {
-        alert('User already exists')
+      error: (err: any) => {
+        console.log(err)
+        alert(err.error.msg)
       }
     });
 
@@ -73,14 +81,26 @@ export class SignUpComponent {
       input.value = inputValue.slice(0, 15);
     }
   }
+  limitEmailLength(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    const inputValue = input.value;
+    if (inputValue.length > 10) {
+      input.value = inputValue.slice(0, 30);
+    }
+  }
 
   limitMNumberLength(event: Event): void {
     const input = event.target as HTMLInputElement;
     const inputValue = input.value;
+    const isNumeric = !isNaN(Number(inputValue));
+    if (!isNumeric) {
+      input.value = inputValue.slice(0, -1);
+    }
     if (inputValue.length > 10) {
       input.value = inputValue.slice(0, 10);
     }
   }
+  
 
   checkInput(event: KeyboardEvent) {
     const key = event.keyCode
@@ -89,5 +109,9 @@ export class SignUpComponent {
       (key >= 97 && key <= 122) ||
       key === 8 
     )
+  }
+
+  togglePassword() {
+    this.passwordToggler = !this.passwordToggler
   }
 }

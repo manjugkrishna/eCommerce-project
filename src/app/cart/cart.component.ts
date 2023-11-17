@@ -36,35 +36,32 @@ export class CartComponent {
     if (item.quantity && item.quantity > 1) {
       item.quantity -= 1;
       this.cartService.addToCart(item.productId._id, -1).subscribe({
-        next:() => {
-          console.log('subtracted')
+        next: () => {
+          console.log('subtracted');
         }
-      })
+      });
+    } else {
+      // Remove the item if quantity becomes zero
+      this.removeItem(item, this.cartProducts.indexOf(item));
     }
   }
-  removeItem(item: any, index:number) {
+  
+  removeItem(item: any, index: number) {
     this.cartProducts.splice(index, 1);
     this.cartService.removeFromCart(item.productId._id).subscribe({
-      next:() => {
-        console.log('removed')
+      next: () => {
+        console.log('removed');
       }
-    })
+    });
   }
-  // getSubtotal(): number {
-  //   let sum = 0;
-  //   this.cartProducts.forEach(item => {
-  //     if (item.productId && item.productId.productPrice) {
-  //       sum += item.quantity * item.productId.productPrice;
-  //     }
-  //   });
-  //   return sum;
-  // }
-  // private updateLocalStorage(): void {
-  //   const currentUser = this.userService.getCurrentUser();
-  //   const userId = currentUser ? currentUser.id : 'default';
-
-  //   // Use userId to update the correct cart for the user
-  //   localStorage.setItem(`cart_${userId}`, JSON.stringify(this.cartProducts));
-  // }
   
+  getSubtotal(): number {
+    let sum = 0;
+    this.cartProducts.forEach(item => {
+      if (item.productId && item.productId.productPrice) {
+        sum += item.quantity * item.productId.productPrice;
+      }
+    });
+    return sum;
+  }
 }

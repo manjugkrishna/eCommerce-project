@@ -24,7 +24,7 @@ export class UserService {
         return userData;
     } catch (error) {
       console.log('error', error);
-      throw error; // You can handle errors as needed
+      throw error; 
     }
   }
 
