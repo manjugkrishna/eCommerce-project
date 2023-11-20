@@ -31,7 +31,6 @@ export class CartComponent {
       }
     })
   }
-
   decrementQuantity(item: any) {
     if (item.quantity && item.quantity > 1) {
       item.quantity -= 1;
@@ -41,7 +40,6 @@ export class CartComponent {
         }
       });
     } else {
-      // Remove the item if quantity becomes zero
       this.removeItem(item, this.cartProducts.indexOf(item));
     }
   }

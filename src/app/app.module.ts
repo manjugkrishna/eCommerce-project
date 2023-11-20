@@ -8,7 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
-import { SaleComponent } from './sale/sale.component';
+// import { SaleComponent } from './sale/sale.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
@@ -24,7 +24,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    SaleComponent,
+    // SaleComponent,
     ContactUsComponent,
     LoginComponent,
     SignUpComponent,

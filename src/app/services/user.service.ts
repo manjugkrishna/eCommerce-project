@@ -1,12 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+  private currentUserSubject: BehaviorSubject<any>;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.currentUserSubject = new BehaviorSubject<any>(this.getCurrentUser())
+  }
 
   registerUser(user: any): any {
     return this.http.post('http://localhost:3000/api/v1/signup', user)
@@ -31,12 +35,15 @@ export class UserService {
   getCurrentUser(): any {
     return JSON.parse(localStorage.getItem('currentUser') || '{}');
   }
-
-  setCurrentUser(user: any): void {
-    localStorage.setItem('currentUser', JSON.stringify(user))
-  }
-
   logoutUser(): void {
     localStorage.removeItem('currentUser');
   }
+  getCurrentUserObservable(): Observable<any> {
+    return this.currentUserSubject.asObservable();
+  }
+  setCurrentUser(newUser: any): void {
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+    this.currentUserSubject.next(newUser);
+  }
+
 }

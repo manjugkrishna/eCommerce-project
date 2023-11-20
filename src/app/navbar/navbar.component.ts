@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { ProductService } from '../services/product.service';
 import { Router } from '@angular/router';
@@ -25,16 +25,16 @@ export class NavbarComponent implements OnInit{
     private router: Router,private userService: UserService) {
     this.cartProducts = this.productService.cart;
     this.selectedCategory = this.categories[0];
-    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
-      this.isLoggedIn = isLoggedIn;
-    });
     console.log(this.cartProducts)
   }
 
   ngOnInit(): void {
+    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    });
     if (this.isLoggedIn) {
-      const currentUser = this.userService.getCurrentUser().user.name;
-      this.username = currentUser;
+      
+      this.userService.getCurrentUserObservable().subscribe(data => this.username = data.user.name)
       console.log('currentUser',this.username)
     } else {
       console.log('not logged in')
@@ -48,12 +48,9 @@ export class NavbarComponent implements OnInit{
   }
   toggleLogin() {
     if (this.isLoggedIn) {
-      // Perform logout logic
-      this.authService.logout();
-      // Redirect to the login page or any other page
+      this.authService.logout();  
       this.router.navigate(['/login']);
     } else {
-      // Redirect to the login page
       this.router.navigate(['/login']);
     }
   }

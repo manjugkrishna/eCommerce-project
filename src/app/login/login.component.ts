@@ -45,7 +45,6 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(email, password)
       .then((data) => {
         if (data.msg === 'login successful') {
-          // Navigate to home or perform other actions
           this.authService.login()
           this.userService.setCurrentUser(data)
           this.router.navigate(['/home']);
@@ -54,7 +53,6 @@ export class LoginComponent implements OnInit {
       .catch((error) => {
         console.error('Error in login', error);
         alert('Invalid Credentials')
-        // Handle errors as needed
       });
   }
   togglePassword() {

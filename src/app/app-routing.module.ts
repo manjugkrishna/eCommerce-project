@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 // import { CartComponent } from './cart/cart.component';
-import { SaleComponent } from './sale/sale.component';
+// import { SaleComponent } from './sale/sale.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
@@ -24,10 +24,10 @@ const routes: Routes = [
     component: CartComponent,
     
   },
-  {
-    path: 'sale',
-    component: SaleComponent
-  },
+  // {
+  //   path: 'sale',
+  //   component: SaleComponent
+  // },
   {
     path: 'contact-us',
     component: ContactUsComponent
