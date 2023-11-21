@@ -22,9 +22,9 @@
             <h5>SubTotal :</h5>
             <h5>{{ getSubtotal() | currency: 'USD':true }}</h5>
         </div>
-            <!-- <div class="d-flex justify-content-evenly mt-2">
-                <a routerLink="/checkout"> <button class="btn btn-danger rounded-0 px-3">Checkout</button></a>
-            </div> -->
+            <div class="d-flex justify-content-evenly mt-2">
+                <a routerLink="/order"> <button class="btn btn-danger rounded-0 px-3" (click)="orderNow()">Order Now</button></a>
+            </div>
         </div>
     </li>
 </ng-container>

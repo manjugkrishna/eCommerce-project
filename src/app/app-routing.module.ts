@@ -9,6 +9,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CategoryComponent } from './category/category.component';
 import { CartComponent } from './cart/cart.component';
+import { OrderService } from './services/order.service';
+import { OrderComponent } from './order/order.component';
 
 const routes: Routes = [
   {
@@ -24,10 +26,10 @@ const routes: Routes = [
     component: CartComponent,
     
   },
-  // {
-  //   path: 'sale',
-  //   component: SaleComponent
-  // },
+  {
+    path: 'order',
+    component: OrderComponent
+  },
   {
     path: 'contact-us',
     component: ContactUsComponent

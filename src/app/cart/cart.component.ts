@@ -1,7 +1,9 @@
+import { OrderService } from './../services/order.service';
 import { Component } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { UserService } from '../services/user.service';
 import { CartServiceService } from '../services/cart-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +17,7 @@ export class CartComponent {
   constructor(
     private productService: ProductService,
     private userService:UserService,
-    private cartService: CartServiceService) {
+    private cartService: CartServiceService,private orderService:OrderService,private router:Router) {
     this.cartService.getCart().subscribe((res) => {
       console.log('cart from db',res)
       this.cartProducts = res.data.items
@@ -49,6 +51,17 @@ export class CartComponent {
     this.cartService.removeFromCart(item.productId._id).subscribe({
       next: () => {
         console.log('removed');
+      }
+    });
+  }
+  orderNow() {
+    this.orderService.placeOrder(this.cartProducts).subscribe({
+      next: (order) => {
+        alert('Order placed successfully:');
+        this.router.navigate(['/order'])
+      },
+      error: (error) => {
+        console.error('Error placing order:', error);
       }
     });
   }

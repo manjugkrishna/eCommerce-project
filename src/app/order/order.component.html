@@ -1,0 +1,20 @@
+<div *ngIf="orders.length !== 0; else noOrders">
+    <div *ngFor="let order of orders">
+        <div class="order-item">
+            <h3>Order ID: {{ order._id }}</h3>
+            <ul>
+                <li *ngFor="let item of order.items">
+                    {{ item.quantity }} x {{ item.productId?.productName }} - {{ item.productId.productPrice | currency:
+                    'USD':true }}
+                </li>
+            </ul>
+            <p>Total: {{ order.total | currency: 'USD':true }}</p> 
+             <p>Status:{{ order.status}}</p>
+             <button class="btn btn-danger">Check Out</button>
+        </div>
+    </div>
+</div>
+
+<ng-template #noOrders>
+    <p>No orders available.</p>
+</ng-template>
