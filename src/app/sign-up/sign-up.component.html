@@ -8,13 +8,13 @@
         <h4>Sign Up</h4>
         <form [formGroup]="signupForm" (ngSubmit)="submit()">
             <div class="inputs">
-                <input type="text"  (keypress)="checkInput($event)" name="name" class="login__input" placeholder="Name *"
+                <input type="text"  (keypress)="checkInput($event)" name="Firstname" class="login__input" placeholder="Name *"
                     formControlName="name" (input)="limitUserNameLength($event)">
                 <div class="error-list" *ngIf="fc.name.errors && (fc.name.touched || isSubmitted)">
                     <div *ngIf="fc.name.errors.required" class="alert alert-danger">name should not be empty
                     </div>
                     <div *ngIf="fc.name.errors.minlength" class="alert alert-danger">name should be
-                        atleast 5 characters</div>
+                        atleast 3 characters</div>
                     <div *ngIf="fc.name.errors.maxlength" class="alert alert-danger">name should be
                         atmost 15 characters</div>
                 </div>

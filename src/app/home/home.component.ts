@@ -30,13 +30,16 @@ export class HomeComponent implements OnInit {
     })
   }
   addItemToCart(product: any) {
-    this.cartService.addToCart(product._id, 1).subscribe({
+    this.cartService.addToCart(product.id, 1).subscribe({
       next: (res) => {
         console.log(res)
       alert("Item added to cart")
       },
       error: (err) => {
-        alert('Unable to add. Please login')
+        console.log(err);
+        
+        alert(err.error.message)
+        // alert('Unable to add. Please login')
         this.router.navigate(['/login']);
       }
     })

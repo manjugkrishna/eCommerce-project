@@ -26,14 +26,23 @@ export class NavbarComponent implements OnInit{
     this.cartProducts = this.productService.cart;
     this.selectedCategory = this.categories[0];
     console.log(this.cartProducts)
+    this.authService.isLoggedIn.subscribe((isLoggedIn) => {
+      this.isLoggedIn = isLoggedIn;
+    });
+    if (this.isLoggedIn) {      
+      this.userService.getCurrentUserObservable().subscribe(data => this.username = data.user.name)
+      console.log('currentUser',this.username)
+    } else {
+      console.log('not logged in')
+      this.username = '';
+    }
   }
 
   ngOnInit(): void {
     this.authService.isLoggedIn.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
-    if (this.isLoggedIn) {
-      
+    if (this.isLoggedIn) {      
       this.userService.getCurrentUserObservable().subscribe(data => this.username = data.user.name)
       console.log('currentUser',this.username)
     } else {

@@ -22,7 +22,7 @@ export class SignUpComponent {
   }
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      name: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(16)]],
+      name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(16)]],
       email: ['', [Validators.required,
       Validators.minLength(10),
       Validators.maxLength(30),Validators.email]],
@@ -62,13 +62,16 @@ export class SignUpComponent {
       phoneNumber: user.mobileNumber,
       password: user.password
     }
+  
+    
     this.userService.registerUser(dataToPass).subscribe({
       next: () => {
         this.router.navigate(['/login']);
         alert("SignUp Successfull !!!");
       },
       error: (err: any) => {
-        console.log(err)
+        console.log(err.error);
+        
         alert(err.error.msg)
       }
     });

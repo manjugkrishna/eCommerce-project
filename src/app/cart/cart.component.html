@@ -2,10 +2,10 @@
     <div class="cart-items-container">
         <div *ngFor="let item of cartProducts; let i = index">
             <div class="cart-item">
-                <img [src]="item.productId.productImageUrl" alt="{{ item.productId.productName }}" class="cart-item-image">
+                <img [src]="item.Product.productImageUrl" alt="{{ item.Product.productName }}" class="cart-item-image">
                 <div class="cart-item-details">
-                    <p class="cart-item-name">{{ item.productId?.productName }}</p>
-                    <p class="cart-item-price">{{ item.productId?.productPrice | currency: 'USD':true }}</p>
+                    <p class="cart-item-name">{{ item.Product?.productName }}</p>
+                    <p class="cart-item-price">{{ item.Product?.productPrice | currency: 'USD':true }}</p>
                     <div class="quantity-controls">
                         <button type="button" class="btn btn-secondary" (click)="decrementQuantity(item)">-</button>
                         <span class="quantity">{{ item.quantity || 1 }}</span>

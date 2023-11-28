@@ -20,13 +20,14 @@ export class CartComponent {
     private cartService: CartServiceService,private orderService:OrderService,private router:Router) {
     this.cartService.getCart().subscribe((res) => {
       console.log('cart from db',res)
-      this.cartProducts = res.data.items
+      this.cartProducts = res.data
     });
+    
   }
 
   incrementQuantity(item: any) {
     item.quantity = (item.quantity || 1) + 1;
-    this.cartService.addToCart(item.productId._id, 1).subscribe({
+    this.cartService.addToCart(item.Product.id, 1).subscribe({
       next:() => {
         console.log('added')
         console.log(this.cartProducts)
@@ -36,7 +37,7 @@ export class CartComponent {
   decrementQuantity(item: any) {
     if (item.quantity && item.quantity > 1) {
       item.quantity -= 1;
-      this.cartService.addToCart(item.productId._id, -1).subscribe({
+      this.cartService.addToCart(item.Product.id, -1).subscribe({
         next: () => {
           console.log('subtracted');
         }
@@ -48,7 +49,7 @@ export class CartComponent {
   
   removeItem(item: any, index: number) {
     this.cartProducts.splice(index, 1);
-    this.cartService.removeFromCart(item.productId._id).subscribe({
+    this.cartService.removeFromCart(item.Product.id).subscribe({
       next: () => {
         console.log('removed');
       }
@@ -57,7 +58,7 @@ export class CartComponent {
   orderNow() {
     this.orderService.placeOrder(this.cartProducts).subscribe({
       next: (order) => {
-        alert('Order placed successfully:');
+        alert('Order placed successfully');
         this.router.navigate(['/order'])
       },
       error: (error) => {
@@ -69,8 +70,8 @@ export class CartComponent {
   getSubtotal(): number {
     let sum = 0;
     this.cartProducts.forEach(item => {
-      if (item.productId && item.productId.productPrice) {
-        sum += item.quantity * item.productId.productPrice;
+      if (item.Product.id && item.Product.productPrice) {
+        sum += item.quantity * item.Product.productPrice;
       }
     });
     return sum;

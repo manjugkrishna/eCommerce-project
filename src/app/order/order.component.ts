@@ -9,24 +9,22 @@ import { OrderService } from '../services/order.service';
 export class OrderComponent implements OnInit {
   orders: any[] = [];
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService) {
+    this.orderService.getUserOrders().subscribe((res)=>{
+      console.log('order from db',res)    
+    })
+  }
 
   ngOnInit(): void {
     this.loadOrders();
   }
-  // oadAllProducts() {
-  //   this.productService.getAllProducts().subscribe((result: any) => {
-  //     console.log(result.data)
-  //     this.productList = result.data
-  //   })
-  // }
+  
 
   loadOrders(): void {
     this.orderService.getUserOrders().subscribe((result: any) => {
-      console.log(result.data)
-      this.orders = result.data
+      console.log(result.orders)
+      this.orders = result.orders
     })
-      
-   
+        
   }
 }

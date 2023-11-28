@@ -15,7 +15,7 @@ export class OrderService {
   placeOrder(cartItems: any[]): Observable<any> {
     const orderData = {
       items: cartItems.map(item => ({
-        productId: item.productId._id,
+        productId: item.id,
         quantity: item.quantity
       }))
     };
