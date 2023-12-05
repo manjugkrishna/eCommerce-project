@@ -42,8 +42,9 @@ export class UserService {
     return this.currentUserSubject.asObservable();
   }
   setCurrentUser(newUser: any): void {
+    console.log('logging')
     localStorage.setItem('currentUser', JSON.stringify(newUser));
     this.currentUserSubject.next(newUser);
   }
-
+  
 }

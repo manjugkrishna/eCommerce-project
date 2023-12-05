@@ -1,6 +1,8 @@
-<div *ngIf="orders.length !== 0">
+<div *ngIf="!loading && orders.length !== 0">
+    <h3 style="text-align: center;">Order Summary</h3>
     <div *ngFor="let order of orders">
         <div class="order-item">
+            
             <h3>Order ID: {{ order.id }}</h3>
             <ul>
                 <li *ngFor="let item of order.items">
@@ -9,13 +11,13 @@
                 </li>
             </ul>
             <p>Total: {{ order.total | currency: 'USD':true }}</p>
-            <p>Status:{{ order.status}}</p>
-            <button class="btn btn-danger">Check Out</button>
+            
+            
         </div>
     </div>
 </div>
 
 
-<div class=" w-100 text-center" *ngIf="orders.length == 0">
+<div class=" w-100 text-center" *ngIf="!loading && orders.length === 0">
     <h4>No Orders</h4>
 </div>

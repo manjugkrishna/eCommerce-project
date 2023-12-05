@@ -14,7 +14,7 @@ export class ProductService {
   getAllProducts(){
         return this.http.get("http://localhost:3000/api/v1/products");
   }
-  // addToCart(product: any) {
+  // addToCart(product: any) { 
   //   const existingItem = this.cart.find(item => item.productId === product.productId);
 
   //   if (existingItem) {

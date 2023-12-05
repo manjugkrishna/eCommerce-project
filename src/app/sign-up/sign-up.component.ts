@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, FormControl, AbstractControl, Valid
 import { Router } from '@angular/router';
 import { PasswordValidators } from './password.validators';
 import { UserService } from '../services/user.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-sign-up',
@@ -67,12 +67,13 @@ export class SignUpComponent {
     this.userService.registerUser(dataToPass).subscribe({
       next: () => {
         this.router.navigate(['/login']);
-        alert("SignUp Successfull !!!");
+        // alert("SignUp Successfull !!!");
+        this.showSuccessAlert();
       },
       error: (err: any) => {
         console.log(err.error);
-        
-        alert(err.error.msg)
+        this.showErrorAlert(err.error.msg);
+        // alert(err.error.msg)
       }
     });
 
@@ -116,5 +117,24 @@ export class SignUpComponent {
 
   togglePassword() {
     this.passwordToggler = !this.passwordToggler
+  }
+  private showSuccessAlert() {
+    Swal.fire({
+      icon: 'success',
+      title: 'Signup Successful!',
+      text: 'You have successfully signed up.',
+      confirmButtonColor: '#28a745',
+      confirmButtonText: 'OK'
+    });
+  }
+
+  private showErrorAlert(errorMessage: string) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error!',
+      text: errorMessage,
+      confirmButtonColor: '#d33',
+      confirmButtonText: 'OK'
+    });
   }
 }

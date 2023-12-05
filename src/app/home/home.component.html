@@ -18,14 +18,15 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{product.productName}}</h5>
                                     <p class="card-text">
-                                        <del> {{product.productPrice+50 | currency}}</del><span
+                                        <!-- <del> {{product.productPrice+50 | currency}}</del> -->
+                                        <span
                                             class="text-danger fw-semibold me-2">{{product.productPrice |
                                             currency}}</span>
-                                        <span class="text-success">35% Off</span>
+                                        <!-- <span class="text-success">35% Off</span> -->
                                     </p>
                                     <div class="row">
                                         <div class="col-15 text-end">
-                                            <button class="btn btn-sm btn-success" (click)="addItemToCart(product)"> Add
+                                            <button class="btn btn-sm btn-success" (click)="addItemToCart(product)"> <i class="fa fa-shopping-cart"></i>Add
                                                 To Cart</button>
                                         </div>
                                     </div>

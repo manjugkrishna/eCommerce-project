@@ -6,6 +6,7 @@ import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 
 
+
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
@@ -42,8 +43,8 @@ export class NavbarComponent implements OnInit{
     this.authService.isLoggedIn.subscribe((isLoggedIn) => {
       this.isLoggedIn = isLoggedIn;
     });
+    this.userService.getCurrentUserObservable().subscribe(data => this.username = data.user.name)
     if (this.isLoggedIn) {      
-      this.userService.getCurrentUserObservable().subscribe(data => this.username = data.user.name)
       console.log('currentUser',this.username)
     } else {
       console.log('not logged in')

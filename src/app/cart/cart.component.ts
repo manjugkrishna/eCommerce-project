@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class CartComponent {
   cartProducts: any[] = [];
   nullStr = 'Empty'
-
+  loading: boolean = true;
   constructor(
     private productService: ProductService,
     private userService:UserService,
@@ -21,6 +21,7 @@ export class CartComponent {
     this.cartService.getCart().subscribe((res) => {
       console.log('cart from db',res)
       this.cartProducts = res.data
+      this.loading = false;
     });
     
   }
@@ -58,8 +59,8 @@ export class CartComponent {
   orderNow() {
     this.orderService.placeOrder(this.cartProducts).subscribe({
       next: (order) => {
-        alert('Order placed successfully');
-        this.router.navigate(['/order'])
+        // alert('Order placed successfully');
+        this.router.navigate(['/checkout'])
       },
       error: (error) => {
         console.error('Error placing order:', error);
