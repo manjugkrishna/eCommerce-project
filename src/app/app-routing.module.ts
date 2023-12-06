@@ -12,8 +12,13 @@ import { CartComponent } from './cart/cart.component';
 import { OrderService } from './services/order.service';
 import { OrderComponent } from './order/order.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
+  {
+    path:'home',
+    component:LandingComponent
+  },
   {
     path: 'products',
     component: HomeComponent

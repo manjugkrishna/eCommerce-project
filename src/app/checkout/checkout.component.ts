@@ -18,9 +18,9 @@ export class CheckoutComponent implements OnInit{
   constructor(private formBuilder: FormBuilder, private router: Router, private userService: UserService,private addressService:AddressService) {
     this.billingForm = this.formBuilder.group({
       address: ['', [Validators.required, Validators.maxLength(30)]],
-       city: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]], 
-      country: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]], 
-     state: ['', [Validators.required, Validators.pattern('[a-zA-Z]+')]], 
+       city: ['', [Validators.required, Validators.maxLength(30),Validators.pattern('[a-zA-Z]+')]], 
+      country: ['', [Validators.required,Validators.maxLength(30), Validators.pattern('[a-zA-Z]+')]], 
+     state: ['', [Validators.required,Validators.maxLength(30), Validators.pattern('[a-zA-Z]+')]], 
      postalCode: ['', [Validators.required, Validators.pattern(/^[0-9]*$/)]] 
    });
   }

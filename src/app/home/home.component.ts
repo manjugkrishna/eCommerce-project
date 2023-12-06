@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { CartServiceService } from '../services/cart-service.service';
 import { UserService } from '../services/user.service';
+import{ProductData} from "../interfaces/product"
 
 @Component({
   selector: 'app-home',
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
       this.productList = result.data
     })
   }
-  addItemToCart(product: any) {
+  addItemToCart(product: ProductData) {
     this.cartService.addToCart(product.id, 1).subscribe({
       next: (res) => {
         console.log(res)

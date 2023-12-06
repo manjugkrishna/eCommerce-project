@@ -6,47 +6,48 @@
                 <input type="text" name="address" class="login__input" placeholder="Address *"
                     formControlName="address">
                 <div class="error-list" *ngIf="fc.address.errors && (fc.address.touched || isSubmitted)">
-                    <div *ngIf="fc.address.errors.required" class="alert alert-danger">Address Line  should not be
+                    <div *ngIf="fc.address.errors.required" class="alert alert-danger">Address Line should not be
                         empty</div>
-                    <div *ngIf="fc.address.errors.maxLength" class="alert alert-danger">Address Line  should be at
+                    <div *ngIf="fc.address.errors.maxLength" class="alert alert-danger">Address Line should be at
                         most 30 characters</div>
                 </div>
             </div>
-
             <div class="inputs">
                 <input type="text" name="city" class="login__input" placeholder="City *" formControlName="city">
                 <div class="error-list" *ngIf="fc.city.errors && (fc.city.touched || isSubmitted)">
                     <div *ngIf="fc.city.errors.required" class="alert alert-danger">City should not be empty</div>
+                    <div *ngIf="fc.city.errors.maxLength" class="alert alert-danger">city should contain at
+                        most 30 characters</div>
                 </div>
-            </div> 
-
+            </div>
             <div class="inputs">
                 <input type="text" name="country" class="login__input" placeholder="Country *"
                     formControlName="country">
                 <div class="error-list" *ngIf="fc.country.errors && (fc.country.touched || isSubmitted)">
                     <div *ngIf="fc.country.errors.required" class="alert alert-danger">Country should not be empty</div>
+                    <div *ngIf="fc.country.errors.maxLength" class="alert alert-danger">Country should contain at
+                        most 30 characters</div>
                 </div>
             </div>
-
-         <div class="inputs">
+            <div class="inputs">
                 <input type="text" name="state" class="login__input" placeholder="State *" formControlName="state">
                 <div class="error-list" *ngIf="fc.state.errors && (fc.state.touched || isSubmitted)">
                     <div *ngIf="fc.state.errors.required" class="alert alert-danger">State should not be empty</div>
+                    <div *ngIf="fc.state.errors.maxLength" class="alert alert-danger">state should contain at
+                        most 30 characters</div>
                 </div>
             </div>
-
             <div class="inputs">
-                <input type="number" name="postalCode" class="login__input" placeholder="Postal Code *"  
+                <input type="number" name="postalCode" class="login__input" placeholder="Postal Code *"
                     formControlName="postalCode" (input)="limitcodeLength($event)">
                 <div class="error-list" *ngIf="fc.postalCode.errors && (fc.postalCode.touched || isSubmitted)">
                     <div *ngIf="fc.postalCode.errors.required" class="alert alert-danger">Postal Code should not be
                         empty</div>
                 </div>
-            </div> 
-
+            </div>
             <button class="button " type="submit">
                 <span class="button__text">{{ existingAddress ? 'Save' : 'Add' }}</span>
-              </button>
+            </button>
         </form>
     </div>
 </div>

@@ -4,6 +4,7 @@ import { ProductService } from '../services/product.service';
 import { UserService } from '../services/user.service';
 import { CartServiceService } from '../services/cart-service.service';
 import { Router } from '@angular/router';
+import{CartDataRes} from "../interfaces/product"
 
 @Component({
   selector: 'app-cart',
@@ -15,8 +16,8 @@ export class CartComponent {
   nullStr = 'Empty'
   loading: boolean = true;
   constructor(
-    private productService: ProductService,
-    private userService:UserService,
+    // private productService: ProductService,
+    // private userService:UserService,
     private cartService: CartServiceService,private orderService:OrderService,private router:Router) {
     this.cartService.getCart().subscribe((res) => {
       console.log('cart from db',res)
@@ -26,7 +27,7 @@ export class CartComponent {
     
   }
 
-  incrementQuantity(item: any) {
+  incrementQuantity(item: CartDataRes) {
     item.quantity = (item.quantity || 1) + 1;
     this.cartService.addToCart(item.Product.id, 1).subscribe({
       next:() => {
@@ -35,7 +36,7 @@ export class CartComponent {
       }
     })
   }
-  decrementQuantity(item: any) {
+  decrementQuantity(item: CartDataRes) {
     if (item.quantity && item.quantity > 1) {
       item.quantity -= 1;
       this.cartService.addToCart(item.Product.id, -1).subscribe({
@@ -48,7 +49,7 @@ export class CartComponent {
     }
   }
   
-  removeItem(item: any, index: number) {
+  removeItem(item: CartDataRes, index: number) {
     this.cartProducts.splice(index, 1);
     this.cartService.removeFromCart(item.Product.id).subscribe({
       next: () => {
@@ -58,8 +59,7 @@ export class CartComponent {
   }
   orderNow() {
     this.orderService.placeOrder(this.cartProducts).subscribe({
-      next: (order) => {
-        // alert('Order placed successfully');
+      next: () => {   
         this.router.navigate(['/checkout'])
       },
       error: (error) => {

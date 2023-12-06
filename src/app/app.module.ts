@@ -17,8 +17,7 @@ import { CartComponent } from './cart/cart.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { OrderComponent } from './order/order.component';
 import { CheckoutComponent } from './checkout/checkout.component';
-
-
+import { LandingComponent } from './landing/landing.component';
 
 
 @NgModule({
@@ -32,7 +31,8 @@ import { CheckoutComponent } from './checkout/checkout.component';
     CategoryComponent,
     CartComponent,
     OrderComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,

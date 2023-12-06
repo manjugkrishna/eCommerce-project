@@ -3,7 +3,7 @@ import { ProductService } from '../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { CartServiceService } from '../services/cart-service.service';
-
+import{ProductData} from "../interfaces/product"
 
 @Component({
   selector: 'app-category',
@@ -28,8 +28,8 @@ export class CategoryComponent {
       console.log((this.filteredItems).length);
     })
   }
-  addItemToCart(product: any) {
-    this.cartService.addToCart(product._id, 1).subscribe({
+  addItemToCart(product: ProductData) {
+    this.cartService.addToCart(product.id, 1).subscribe({
       next: (res) => {
         console.log(res)
       alert("Item added to cart")

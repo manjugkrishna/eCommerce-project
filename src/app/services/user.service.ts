@@ -12,7 +12,7 @@ export class UserService {
     this.currentUserSubject = new BehaviorSubject<any>(this.getCurrentUser())
   }
 
-  registerUser(user: any): any {
+  registerUser(user: object): any {
     return this.http.post('http://localhost:3000/api/v1/signup', user)
   }
 
@@ -41,10 +41,11 @@ export class UserService {
   getCurrentUserObservable(): Observable<any> {
     return this.currentUserSubject.asObservable();
   }
-  setCurrentUser(newUser: any): void {
+  setCurrentUser(newUser: object): void {
     console.log('logging')
     localStorage.setItem('currentUser', JSON.stringify(newUser));
     this.currentUserSubject.next(newUser);
+    console.log(newUser)
   }
   
 }

@@ -5,15 +5,17 @@
 
 .card-title {
     white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.item-img {
+/* .item-img {
     padding: 5px;
-}
+} */
+
 .card-box {
-    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.47);
--webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.47);
--moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.47);
+
+    box-shadow: 0px 0px 10px 0px rgba(112, 34, 185, 0.47);
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(112, 34, 185, 0.47);
 }
